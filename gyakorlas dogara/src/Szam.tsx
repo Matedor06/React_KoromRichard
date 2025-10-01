@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 function Szam() {
     const [szam1, setSzam1] = useState<number>(0);
     const [szam2, setSzam2] = useState<number>(0);
-    const [eredmeny, setEredmeny] = useState<number>();
+    const [eredmeny, setEredmeny] = useState<number>(0);
     const [muvelet, setMuvelet] = useState<string>('+');
 
     useEffect(() => {
@@ -35,7 +35,7 @@ function Szam() {
             </select>
             <input type="number" onChange={(e) => setSzam2(Number(e.target.value))} />
             <p>
-                {szam1} {muvelet} {szam2} = {eredmeny}
+                {szam1} {muvelet} {szam2} = {eredmeny.toFixed(2)}
             </p>
         </div>
     );
