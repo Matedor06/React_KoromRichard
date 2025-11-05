@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const BACKEND_URL = "http://localhost:8001/api";
 
