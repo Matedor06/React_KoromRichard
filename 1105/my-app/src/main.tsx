@@ -7,6 +7,7 @@ import GetOnePizza from './pages/getOnePizza'
 import PostPizza from './pages/postPizza'
 import UpdatePizza from './pages/updatePizza'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -19,5 +20,6 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/update-pizza/:id" element={<UpdatePizza />} />
       </Routes>
     </BrowserRouter>
+    <ToastContainer position='top-center' theme='colored' />
   </StrictMode>,
 )

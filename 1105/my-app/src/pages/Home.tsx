@@ -1,7 +1,18 @@
 
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import {toast} from 'react-toastify'
+
 
 const Home = () => {
+
+  useEffect(() =>{
+  toast.info("HElló")
+  toast.warning("Ajaj")
+  toast.error("hiba")
+  toast.success("sikeres")
+},)
+
   return (
     <>
       <h1>Pizza Menedzsment Rendszer</h1>
