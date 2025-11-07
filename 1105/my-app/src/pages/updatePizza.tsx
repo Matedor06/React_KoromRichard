@@ -2,6 +2,8 @@ import { use, useEffect, useState } from "react";
 import type { Pizza } from "../types/Pizza";
 import apiClient from "../api/apiClient";
 import { Link, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import '../index.css';
 
 const updatePizza = () => {
   const [nev, setNev] = useState("");
@@ -16,7 +18,7 @@ const updatePizza = () => {
         setLeiras(response.data.leiras);
         setAr(Number(response.data.ar));
         setImageUrl(response.data.imageUrl);
-    }).catch((error) => alert(error));
+    }).catch((error) => toast.error("Hiba a pizza betöltésénél"));
   }, [id]);
 
   const submit = () => {
@@ -27,8 +29,14 @@ const updatePizza = () => {
       imageUrl,
     };
     apiClient.put(`/pizzak/${id}`, p)
-      .then((response) => alert(response.status))
-      .catch((error) => alert(error));
+      .then((response) => toast.success("Pizza frissítve", {
+        className: 'custom-toast-success',
+        toastId: 'postPizzaSuccess'
+      }))
+      .catch((error) => toast.error("Hiba a pizza frissítésénél", {
+        className: 'custom-toast-error',
+        toastId: 'postPizzaError'
+      }));
   };
 
   return (

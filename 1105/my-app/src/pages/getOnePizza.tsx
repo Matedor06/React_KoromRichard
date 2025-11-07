@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import type {Pizza} from "../types/Pizza"
 import apiClient, { BACKEND_URL } from "../api/apiClient";
 import { useParams, Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const GetOnePizza = () => {
 const [pizza, setPizza] = useState<Pizza | null>(null);
@@ -13,7 +14,7 @@ useEffect(() => {
       setPizza(response.data);
     })
     .catch((error) => {
-      alert(error.message);
+      toast.error("Hiba a pizzak betöltésénél ",error)
     });
   }, [id]);
 

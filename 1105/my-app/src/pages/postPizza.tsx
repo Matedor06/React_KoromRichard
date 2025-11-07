@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import type { Pizza } from "../types/Pizza";
 import apiClient from "../api/apiClient";
+import { toast } from "react-toastify";
 
 const PostPizza = () => {
   const [nev, setNev] = useState("");
@@ -9,6 +10,36 @@ const PostPizza = () => {
   const [ar, setAr] = useState(0);
   const [imageUrl, setImageUrl] = useState("");
   const addPizza = () => {
+    // Validáció a küldés előtt
+    if (!nev.trim()) {
+      toast.error("A pizza neve kötelező!", {
+        className: 'custom-toast-error',
+        toastId: 'postPizzaValidation'
+      });
+      return;
+    }
+    if (!leiras.trim()) {
+      toast.error("A leírás kötelező!", {
+        className: 'custom-toast-error',
+        toastId: 'postPizzaValidation'
+      });
+      return;
+    }
+    if (ar <= 0) {
+      toast.error("Az ár pozitív szám legyen!", {
+        className: 'custom-toast-error',
+        toastId: 'postPizzaValidation'
+      });
+      return;
+    }
+    if (!imageUrl.trim()) {
+      toast.error("A kép URL kötelező!", {
+        className: 'custom-toast-error',
+        toastId: 'postPizzaValidation'
+      });
+      return;
+    }
+
     const p: Pizza = {
       nev,
       leiras,
@@ -17,8 +48,14 @@ const PostPizza = () => {
     };
     apiClient
       .post("/pizzak", p)
-      .then((response) => alert(response.status))
-      .catch((error) => alert(error));
+      .then(() => toast.success("Pizza hozzáadva", {
+        className: 'custom-toast-success',
+        toastId: 'postPizzaSuccess'
+      }))
+      .catch(() => toast.error("Hiba a pizza hozzáadásánál", {
+        className: 'custom-toast-error',
+        toastId: 'postPizzaError'
+      }));
   };
 
   return (
