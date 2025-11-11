@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import type {Pizza} from "./types/Pizza"
 import apiClient, { BACKEND_URL } from "./api/apiClient";
+import { Link } from 'react-router-dom';
 
 function PizzaGetAll() {
 const [pizzak, setPizzak] = useState<Pizza[]>([]);
@@ -20,7 +21,7 @@ useEffect(() => {
       <div>
         {pizzak.map((pizza) => (
           <div>
-            <h2>{pizza.nev}</h2>
+            <h2><Link to={`/${pizza.id}`}>{pizza.nev}</Link></h2>
             <img
               src={`${BACKEND_URL}/kepek/${pizza.imageUrl}`}
               alt={pizza.nev}
