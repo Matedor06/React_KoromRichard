@@ -6,6 +6,8 @@ import AllPizza from './pages/AllPizza'
 import OnePizza from './pages/OnePizza'
 import { ToastContainer } from 'react-toastify'
 import Cart from './pages/Cart'
+import Login from './pages/Login'
+import Orders from './pages/Orders'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -14,6 +16,9 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/" element={<AllPizza />} />
         <Route path="/pizza/:id" element={<OnePizza />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/orders" element={<Orders />} />
+
         <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
       <ToastContainer />

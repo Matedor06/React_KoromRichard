@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
 import type { Pizza } from "../types/Pizza";
 import { toast } from "react-toastify";
 import apiClient, { baseURL } from "../api/apiClient";
