@@ -46,6 +46,7 @@ const PostPizza = () => {
       ar,
       imageUrl,
     };
+    
     apiClient
       .post("/pizzak", p)
       .then(() => toast.success("Pizza hozzáadva", {
