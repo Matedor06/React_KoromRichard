@@ -7,6 +7,7 @@ function App() {
   const [count, setCount] = useState(0)
   const asdsadas = 123
   const asdasdasd = 123
+  const asdasdasdasd = 123
   const color = "piros"
   if(color === "piros")
   {
