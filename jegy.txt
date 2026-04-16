@@ -1,0 +1,13 @@
+npm i happy-dom @testing-library/react
+
+// @vitest-environment happy-dom
+
+import {render, screen} from '@testing-library/react'
+import AllPizza from '../pages/AllPizza'
+import { expect, it } from 'vitest'
+
+
+it("Margherita", async () => {
+    render(<AllPizza/>);
+    expect(await screen.findAllByText('Margherita',{},{timeout:1000})).toBeTruthy()
+})
